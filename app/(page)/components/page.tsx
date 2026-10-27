@@ -7,6 +7,8 @@ import ActionButton from "@/src/shared/components/ui/action-button";
 import AlertBanner from "@/src/shared/components/ui/alert-banner";
 import StatusBadge from "@/src/shared/components/ui/status-badge";
 import MetricBentoStat from "@/src/shared/components/ui/metric-bento-stat";
+import RatingDisplay from "@/src/shared/components/ui/rating-display";
+import TagFilterGroup from "@/src/shared/components/ui/tag-filter-group";
 import ToastNotification from "@/src/shared/components/ui/toast-notification";
 import StepProgressTracker from "@/src/shared/components/ui/step-progress-tracker";
 import AcademicAppNavbar from "@/src/shared/components/ui/academic-app-navbar";
@@ -60,14 +62,18 @@ const user = {
     currentTerm: "2026-2",
 };
 
+const initialTags = [
+    { id: "rsc", name: "Server Components", isSelected: true },
+    { id: "tailwind", name: "Tailwind CSS", isSelected: true },
+    { id: "daisyui", name: "DaisyUI Themes", isSelected: false },
+    { id: "actions", name: "Server Actions", isSelected: false },
+];
+
 export default function ComponentsPage() {
     const [modalOpen, setModalOpen] = useState(false);
 
     return <div className="min-h-screen bg-white p-6">
         <h1 className="text-3xl text-[#865cf0] font-semibold">Mis Componentes Icesistas ≽^•⩊•^≼</h1>
-
-        <ToastNotification title="Entrega de Taller Confirmada" message="Commit #7fa12 registrado en repositorio GitHub." />
-
 
         <h2 className="mt-6 text-lg font-bold text-slate-800">Átomos</h2>
         <div className="mt-4 flex flex-wrap items-start gap-6">
@@ -97,6 +103,9 @@ export default function ComponentsPage() {
                     icon={<BadgeCheck />}
                 />
             </div>
+
+            {/* Mi componente de Calificación por Estrellas */}
+            <RatingDisplay score={3.8} totalReviews={40} reviewsLabel="evaluaciones docentes" />
         </div>
 
 
@@ -112,8 +121,13 @@ export default function ComponentsPage() {
 
 
             {/* Mi componente de progreso chekeado */}
-            <div className="max-w-lg w-full">
+            <div className="max-w-lg w-full flex flex-col gap-4">
                 <StepProgressTracker steps={steps} />
+
+                <ToastNotification title="Entrega de Taller Confirmada" message="Commit #7fa12 registrado en repositorio GitHub." />
+
+                {/* Mi componente de Selector de Etiquetas */}
+                <TagFilterGroup title="Filtros de Asignatura:" tags={initialTags} />
             </div>
         </div>
 

@@ -27,8 +27,7 @@ export default function ToastNotification({ title, message, variant = "success",
         onClose?.();
     }
 
-    return <div className="toast toast-top toast-end z-50">
-        <div className={`alert bg-white border ${variantClasses[variant].border} text-slate-800 shadow-md rounded-2xl p-4 flex items-center justify-between max-w-md w-full`}>
+    return <div className={`alert bg-white border ${variantClasses[variant].border} text-slate-800 shadow-md rounded-2xl p-4 flex items-center justify-between max-w-md w-full`}>
             <div className="flex items-center gap-3">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${variantClasses[variant].icon}`}>
                     <StarCheck size={20} />
@@ -40,6 +39,5 @@ export default function ToastNotification({ title, message, variant = "success",
             </div>
 
             <button type="button" onClick={handleClose} aria-label="Cerrar notificación" className="btn btn-xs btn-ghost text-slate-400 hover:text-slate-600 hover:border-0 hover:rounded-l  border-0">✕</button>
-        </div>
-    </div>;
+        </div>;
 }
